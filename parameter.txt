@@ -1,0 +1,7 @@
+path_to_samtools="/XXX/samtools/bin"
+path_to_bwa="/XXX/bwa/bin"
+path_to_java="/XXX/jdk/bin"
+path_to_python2="/XXX/python/bin"
+path_to_gatk="/XXX/gatk/bin"
+path_to_freebayes="/XXX/freebayes/bin"
+path_to_snpEff="/XXX/snpEff"

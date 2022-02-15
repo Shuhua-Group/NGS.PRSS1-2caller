@@ -1,0 +1,16 @@
+# The following table is formatted as tab separated values. 
+#GeneName	GeneId	TranscriptId	BioType	variants_impact_LOW	variants_impact_MODERATE	variants_impact_MODIFIER	variants_effect_3_prime_UTR_variant	variants_effect_downstream_gene_variant	variants_effect_intron_variant	variants_effect_missense_variant	variants_effect_non_coding_transcript_exon_variant	variants_effect_splice_region_variant	variants_effect_synonymous_variant	variants_effect_upstream_gene_variant
+ENSG00000282565	ENSG00000282565.1	ENST00000632398.1	unprocessed_pseudogene	0	0	67	0	18	6	0	0	0	0	43
+PRSS1	ENSG00000274247.4	ENST00000616256.4	protein_coding	2	2	28	0	16	4	2	0	0	2	8
+PRSS1	ENSG00000274247.4	ENST00000622109.1	protein_coding	2	2	28	0	16	4	2	0	0	2	8
+PRSS1	ENSG00000274247.4	ENST00000631597.1	retained_intron	0	0	29	0	18	1	0	2	0	0	8
+PRSS1	ENSG00000274247.4	ENST00000632438.1	retained_intron	0	0	32	0	16	1	0	6	0	0	9
+PRSS1	ENSG00000274247.4	ENST00000632920.1	retained_intron	0	0	25	0	16	1	0	0	0	0	8
+PRSS1	ENSG00000274247.4	ENST00000633149.1	protein_coding	1	2	29	1	16	3	2	0	0	1	9
+PRSS1	ENSG00000274247.4	ENST00000633245.1	protein_coding	2	2	28	0	16	4	2	0	0	2	8
+PRSS2	ENSG00000282049.1	ENST00000632112.1	protein_coding	1	0	38	0	13	4	0	0	0	1	21
+PRSS2	ENSG00000282049.1	ENST00000632660.1	retained_intron	0	0	37	0	16	0	0	0	0	0	21
+PRSS2	ENSG00000282049.1	ENST00000632869.1	processed_transcript	0	0	29	0	13	5	0	0	0	0	11
+PRSS3P1	ENSG00000282295.1	ENST00000633817.1	unprocessed_pseudogene	1	0	66	0	36	8	0	3	1	0	20
+PRSS3P2	ENSG00000282667.1	ENST00000634192.1	unprocessed_pseudogene	0	0	175	0	60	44	0	14	0	0	57
+WBP1LP1	ENSG00000282492.1	ENST00000633469.1	processed_pseudogene	0	0	15	0	15	0	0	0	0	0	0
