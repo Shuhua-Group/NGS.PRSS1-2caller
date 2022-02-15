@@ -1,6 +1,6 @@
 # NGS-PRSS-caller
 
-NGS-PRSS-caller is a tool for solving misaligned short-reads of the pseudogenes PRSS3P2 and TRY7 at PRSS1-PRSS2 locus. Next-generation sequencing data in .bam format will be realigned to call variants and determine haplotype structure with high accuracy and sensitivity.
+NGS-PRSS-caller is a tool for solving misaligned short-reads of the pseudogenes PRSS3P2 and TRY7 at PRSS1-PRSS2 locus. NGS-PRSS-caller realigns short reads to GRCh38 ALT contig (chr7_KI270803v1_alt) from NGS aligned data (bam format), and detects variants including SNV, INDEL and CNV at PRSS1-PRSS2 locus with high accuracy and sensitivity. NGS-PRSS-caller can also annotate the biological consequences of a variant and perform variant phasing with population-level data.
 
 ## Installation
 
@@ -50,4 +50,3 @@ Written by Wang Yimin & Xie bo, with contributions from Lou Haiyi.
 ## Contact
 
 wangyimin@picb.ac.cn
-
