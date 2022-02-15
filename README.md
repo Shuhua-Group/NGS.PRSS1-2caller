@@ -8,14 +8,20 @@ NGS-PRSS-caller does not need to be installed. You need to replace the software 
 
 The following software versions have been tested and passed:
 
-software   version       weblink
-python     2.7           https://www.python.org/downloads/
-java       11.0.1        https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
-samtools   1.9           https://sourceforge.net/projects/samtools/files/samtools/
-bwa        0.7.17-r1188  https://github.com/lh3/bwa/releases
-freebayes  1.3.5         https://github.com/ekg/freebayes
-snpEff     4.3t          https://sourceforge.net/projects/snpeff/files/
-gatk       4.1.7.0       https://gatk.broadinstitute.org/hc/en-us/articles/360036194592-Getting-started-with-GATK4
+software     version       weblink
+> python     2.7           https://www.python.org/downloads/
+
+> java       11.0.1        https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
+
+> samtools   1.9           https://sourceforge.net/projects/samtools/files/samtools/
+
+> bwa        0.7.17-r1188  https://github.com/lh3/bwa/releases
+
+> freebayes  1.3.5         https://github.com/ekg/freebayes
+
+> snpEff     4.3t          https://sourceforge.net/projects/snpeff/files/
+
+> gatk       4.1.7.0       https://gatk.broadinstitute.org/hc/en-us/articles/360036194592-Getting-started-with-GATK4
 
 ## Usage
 ```
