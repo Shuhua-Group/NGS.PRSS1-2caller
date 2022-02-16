@@ -9,23 +9,27 @@ NGS-PRSS-caller does not need to be installed. You need to replace the software 
 The following software versions have been tested and passed:
 
 software     version       weblink
-> python     2.7           https://www.python.org/downloads/
+> python     2.7           https://www.python.org/downloads
+
+> perl       5.22.1        https://www.perl.org/get.html
 
 > java       11.0.1        https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
 
-> samtools   1.9           https://sourceforge.net/projects/samtools/files/samtools/
+> samtools   1.9           https://sourceforge.net/projects/samtools/files/samtools
 
 > bwa        0.7.17-r1188  https://github.com/lh3/bwa/releases
 
 > freebayes  1.3.5         https://github.com/ekg/freebayes
 
-> snpEff     4.3t          https://sourceforge.net/projects/snpeff/files/
+> beagle     5.2           http://faculty.washington.edu/browning/beagle
+
+> snpEff     4.3t          https://sourceforge.net/projects/snpeff/files
 
 > gatk       4.1.7.0       https://gatk.broadinstitute.org/hc/en-us/articles/360036194592-Getting-started-with-GATK4
 
 ## Usage
 ```
-    NGS-PRSS-caller.sh -i [filelist] -m [num] -n [name]
+    NGS-PRSS-caller.sh -i [filelist] -m [num] -p -n [name]
 ```
 
 ## Options
@@ -35,12 +39,13 @@ Required arguments
 
 Optional arguments
     -m [num] Mapping quality (default=50)
+    -p       Do phasing
     -n       Taskname
 ```
 
 ## Example
 ```
-    ./NGS-PRSS-caller.sh -i example.list -n test
+    ./NGS-PRSS-caller.sh -i example.list -p -n test
 ```
 
 ## Credit

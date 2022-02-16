@@ -6,14 +6,15 @@ WD=`pwd`
 
 #parameters
 FLAG_rawbam=0
+FLAG_phasing=0
 MQ=50
 taskname="myPRSScall"
 ref="${SD}/data/GRCh38.ALT_PRSS.fa"
-export PATH=${path_to_samtools}:${path_to_bwa}:${path_to_java}:${path_to_python2}:${path_to_gatk}:${path_to_freebayes}:${path_to_snpEff}:$PATH
+export PATH=${path_to_samtools}:${path_to_bwa}:${path_to_java}:${path_to_python2}:${path_to_perl}:${path_to_gatk}:${path_to_freebayes}:${path_to_snpEff}:$PATH
 
 if [ x$1 != x ]
 then
-	while getopts "i:m:n:" arg
+	while getopts "i:m:pn:" arg
 	do
 		case $arg in
 		i)
@@ -22,6 +23,9 @@ then
 			;;
 		m)
 			MQ=$OPTARG
+			;;
+		p)
+			FLAG_phasing=1
 			;;
 		n)
 			taskname=$OPTARG
@@ -53,7 +57,7 @@ then
 	sampleID=`cat ${rawbam} | cut -f 1`
 	samplecount=`echo ${sampleID[*]} | sed "s/ /\n/g" | wc -l`
 	if [ $samplecount -eq 0 ]
-		then
+	then
 		echo "FAIL: Cannot find sample in list. Please check again."
 		exit 1
 	fi
@@ -81,15 +85,15 @@ then
 			ln -s ${baifile2} ${WD}/bamfile/${id}.bam.bai
 		else
 			cd bamfile
-			${samtools} index -b ${WD}/bamfile/${id}.bam
+			samtools index -b ${WD}/bamfile/${id}.bam
 			cd ..
 		fi
 		depth=`cat ${rawbam} | grep "^${id}	" | cut -f 3`
 		if [ ${depth} == "U" ]
 		then
-			${python27} ${SD}/remapping.py -s ${id} -r GRCh38 -f ${bamfile}
+			python ${SD}/remapping.py -s ${id} -r GRCh38 -f ${bamfile}
 		else
-			${python27} ${SD}/remapping.py -s ${id} -r GRCh38 -f ${bamfile} -e ${depth}
+			python ${SD}/remapping.py -s ${id} -r GRCh38 -f ${bamfile} -e ${depth}
 		fi
 
 		cat ${id}/${id}.PRSS_5copy.primary_genotype.refGRCh38_ALT.remapping.bedcov.matrix.beta.txt | sed -n "2p" >> ${taskname}.remapped.list
@@ -113,26 +117,37 @@ then
 		echo ${remapbam} >> ${taskname}_remapbam.txt
 	done
 
-	${freebayes} -f ${ref} --region PRSS1_PRSS2:1-52148 --cnv-map ${taskname}_cn.txt -L ${taskname}_remapbam.txt -m ${MQ} --min-coverage 5 --min-alternate-fraction 0.3 --use-best-n-alleles 0 --vcf ${taskname}_PRSS.vcf
+	freebayes -f ${ref} --region PRSS1_PRSS2:1-52148 --cnv-map ${taskname}_cn.txt -L ${taskname}_remapbam.txt -m ${MQ} --min-coverage 5 --min-alternate-fraction 0.3 --use-best-n-alleles 0 --vcf ${taskname}_PRSS.tmp.vcf
+
+	#phasing
+	if [ $FLAG_phasing -eq 1 ]
+	then
+		perl ${SD}/reshapeGT.pl ${taskname}_PRSS.tmp.vcf ${taskname}.remapped.list ${taskname}
+		java -Xmx10g -jar ${SD}/beagle.28Jun21.220.jar gt=${taskname}_PRSS.reshape.vcf out=${taskname}_PRSS
+		gunzip ${taskname}_PRSS.vcf.gz
+	else
+		mv ${taskname}_PRSS.tmp.vcf ${taskname}_PRSS.vcf
+	fi
 
 	#annotation
-	${python27} ${SD}/snpEff_config.py ${path_snpEff} ${SD}/data
-	${python27} ${SD}/snpEff_ann.py ${path_snpEff} ${SD}/data ${taskname}_PRSS.vcf ${taskname}_PRSS_snpEff_ann.vcf ${taskname}_PRSS_snpEff_ann.txt
+	python ${SD}/snpEff_config.py ${path_to_snpEff} ${SD}/data
+	python ${SD}/snpEff_ann.py ${path_to_snpEff} ${SD}/data ${taskname}_PRSS.vcf ${taskname}_PRSS_snpEff_ann.vcf ${taskname}_PRSS_snpEff_ann.txt
 
 	rm -r tmp bamfile
 
 	TIMENOW=`date`
 	echo ${TIMENOW}"	NGS-PRSS-call complete!"
 else
-	echo "usage:   NGS-PRSS-caller.sh -i [filelist] -m [num] -n [name]
+	echo "usage:   NGS-PRSS-caller.sh -i [filelist] -m [num] -p -n [name]
 
 Required arguments
           -i FILE  Tab-separated bam file list including *sample ID* / *bam file location* / *sample read depth* (U for unknown)
 
 Optional arguments
           -m [num] Mapping quality (default=50)
+          -p       Do phasing
           -n       Taskname
           
-example: ./NGS-PRSS-caller.sh -i example.list -n test
+example: ./NGS-PRSS-caller.sh -i example.list -p -n test
 "
 fi
