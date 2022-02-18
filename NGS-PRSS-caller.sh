@@ -7,6 +7,7 @@ WD=`pwd`
 #parameters
 FLAG_rawbam=0
 FLAG_phasing=0
+rawref="GRCh38"
 MQ=50
 taskname="myPRSScall"
 ref="${SD}/data/GRCh38.ALT_PRSS.fa"
@@ -14,12 +15,15 @@ export PATH=${path_to_samtools}:${path_to_bwa}:${path_to_java}:${path_to_python2
 
 if [ x$1 != x ]
 then
-	while getopts "i:m:pn:" arg
+	while getopts "i:m:pr:n:" arg
 	do
 		case $arg in
 		i)
 			rawbam=$OPTARG
 			FLAG_rawbam=1
+			;;
+		r)
+			rawref=$OPTARG
 			;;
 		m)
 			MQ=$OPTARG
@@ -43,6 +47,17 @@ then
 		echo "FAIL: Variables uncomplete. Please check again."
 		exit 1
 	done
+
+	if [ $rawref == "GRCh38" -o $rawref == "hg38" ]
+	then
+		rawref="GRCh38"
+	elif [ $rawref == "GRCh37" -o $rawref == "hg19" ]
+	then
+		rawref="GRCh37"
+	else
+		echo "FAIL: Unknown reference genome. Please check again."
+		exit 1
+	fi
 
 	RP="realpath "`echo $rawbam`
 	rawbam=`$RP`
@@ -91,12 +106,17 @@ then
 		depth=`cat ${rawbam} | grep "^${id}	" | cut -f 3`
 		if [ ${depth} == "U" ]
 		then
-			python ${SD}/remapping.py -s ${id} -r GRCh38 -f ${bamfile}
+			python ${SD}/remapping.py -s ${id} -r ${rawref} -f ${bamfile}
 		else
-			python ${SD}/remapping.py -s ${id} -r GRCh38 -f ${bamfile} -e ${depth}
+			python ${SD}/remapping.py -s ${id} -r ${rawref} -f ${bamfile} -e ${depth}
 		fi
-
-		cat ${id}/${id}.PRSS_5copy.primary_genotype.refGRCh38_ALT.remapping.bedcov.matrix.beta.txt | sed -n "2p" >> ${taskname}.remapped.list
+		
+		if [ $rawref == "GRCh38" ]
+		then
+			cat ${id}/${id}.PRSS_5copy.primary_genotype.refGRCh38_ALT.remapping.bedcov.matrix.beta.txt | sed -n "2p" >> ${taskname}.remapped.list
+		else
+			cat ${id}/${id}.PRSS_5copy.primary_genotype.refGRCh37_ALT.remapping.bedcov.matrix.beta.txt | sed -n "2p" >> ${taskname}.remapped.list
+		fi
 	done
 
 	#variant calling
@@ -160,6 +180,7 @@ Required arguments
 
 Optional arguments
           -m [num] Mapping quality (default=50)
+          -r       Reference genome of input data (dafault=GRCh38)
           -p       Do phasing
           -n       Taskname
           

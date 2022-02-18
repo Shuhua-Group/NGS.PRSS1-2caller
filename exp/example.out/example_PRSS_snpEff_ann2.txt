@@ -1,0 +1,24 @@
+##fileformat=VCFv4.2
+##filedate=20220218
+##source="beagle.28Jun21.220.jar"
+##INFO=<ID=AF,Number=A,Type=Float,Description="Estimated ALT Allele Frequencies">
+##INFO=<ID=DR2,Number=A,Type=Float,Description="Dosage R-Squared: estimated squared correlation between estimated REF dose [P(RA) + 2*P(RR)] and true REF dose">
+##INFO=<ID=IMP,Number=0,Type=Flag,Description="Imputed marker">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=DS,Number=A,Type=Float,Description="estimated ALT dose [P(RA) + 2*P(AA)]">
+##SnpEffVersion="4.3t (build 2017-11-24 10:18), by Pablo Cingolani"
+##SnpEffCmd="SnpEff  GRCh38_ALT_PRSS example_PRSS_snpEff_ann.vcf.gz "
+##INFO=<ID=ANN,Number=.,Type=String,Description="Functional annotations: 'Allele | Annotation | Annotation_Impact | Gene_Name | Gene_ID | Feature_Type | Feature_ID | Transcript_BioType | Rank | HGVS.c | HGVS.p | cDNA.pos / cDNA.length | CDS.pos / CDS.length | AA.pos / AA.length | Distance | ERRORS / WARNINGS / INFO' ">
+##INFO=<ID=LOF,Number=.,Type=String,Description="Predicted loss of function effects for this variant. Format: 'Gene_Name | Gene_ID | Number_of_transcripts_in_gene | Percent_of_transcripts_affected'">
+##INFO=<ID=NMD,Number=.,Type=String,Description="Predicted nonsense mediated decay effects for this variant. Format: 'Gene_Name | Gene_ID | Number_of_transcripts_in_gene | Percent_of_transcripts_affected'">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	HGDP00578	HG03490	HG03084	HG00581
+KI270803.1	793776	.	G	A	.	PASS	ANN=A|upstream_gene_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632112.1|protein_coding||c.-180G>A|||||180|,A|upstream_gene_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632660.1|retained_intron||n.-167G>A|||||167|,A|upstream_gene_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632869.1|processed_transcript||n.-1356G>A|||||1356|,A|intergenic_region|MODIFIER|ENSG00000282565-PRSS2|ENSG00000282565.1-ENSG00000282049.1|intergenic_region|ENSG00000282565.1-ENSG00000282049.1|||n.793776G>A||||||	GT	0|0	0|0	1|0	0|0
+KI270803.1	793977	.	A	G	.	PASS	ANN=G|missense_variant|MODERATE|PRSS2|ENSG00000282049.1|transcript|ENST00000632112.1|protein_coding|1/5|c.22A>G|p.Thr8Ala|22/795|22/744|8/247||,G|upstream_gene_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632869.1|processed_transcript||n.-1155A>G|||||1155|,G|non_coding_transcript_exon_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632660.1|retained_intron|1/2|n.35A>G||||||	GT	0|0	0|0	1|0	0|0
+KI270803.1	795722	.	C	A	.	PASS	ANN=A|downstream_gene_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632660.1|retained_intron||n.*197C>A|||||197|,A|intron_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632112.1|protein_coding|2/4|c.201-517C>A||||||,A|intron_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632869.1|processed_transcript|1/2|n.50+541C>A||||||	GT	0|0	0|0	0|1	0|0
+KI270803.1	796308	.	A	G	.	PASS	ANN=G|synonymous_variant|LOW|PRSS2|ENSG00000282049.1|transcript|ENST00000632112.1|protein_coding|3/5|c.270A>G|p.Ala90Ala|270/795|270/744|90/247||,G|downstream_gene_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632660.1|retained_intron||n.*783A>G|||||783|,G|intron_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632869.1|processed_transcript|1/2|n.51-584A>G||||||	GT	0|1	0|1	1|1	0|0
+KI270803.1	796382	.	C	A	.	PASS	ANN=A|stop_gained|HIGH|PRSS2|ENSG00000282049.1|transcript|ENST00000632112.1|protein_coding|3/5|c.344C>A|p.Ser115*|344/795|344/744|115/247||,A|downstream_gene_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632660.1|retained_intron||n.*857C>A|||||857|,A|intron_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632869.1|processed_transcript|1/2|n.51-510C>A||||||;LOF=(PRSS2|ENSG00000282049.1|3|0.33);NMD=(PRSS2|ENSG00000282049.1|3|0.33)	GT	0|0	0|0	1|0	0|0
+KI270803.1	797008	.	G	A	.	PASS	ANN=A|missense_variant|MODERATE|PRSS2|ENSG00000282049.1|transcript|ENST00000632112.1|protein_coding|4/5|c.571G>A|p.Gly191Arg|571/795|571/744|191/247||,A|downstream_gene_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632660.1|retained_intron||n.*1483G>A|||||1483|,A|downstream_gene_variant|MODIFIER|WBP1LP1|ENSG00000282492.1|transcript|ENST00000633469.1|processed_pseudogene||n.*4608C>T|||||4608|,A|non_coding_transcript_exon_variant|MODIFIER|PRSS2|ENSG00000282049.1|transcript|ENST00000632869.1|processed_transcript|2/3|n.167G>A||||||	GT	0|0	1|0	0|0	1|1
+
+
+
+
