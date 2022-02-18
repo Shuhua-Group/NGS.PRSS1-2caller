@@ -61,22 +61,22 @@ All output files can be found in the NGS-PRSS-caller/exp/example.out/ directory.
 1. Variants detected based on GRCh38 ALT contig in vcf format (variants can be phased if you add [-p]).
 * example_PRSS_snpEff_ann.vcf.gz
 
-<img width="1457" alt="Screen Shot 2022-02-18 at 4 04 32 PM" src="https://user-images.githubusercontent.com/86826743/154642697-4197db0b-0f8a-40a0-bf1a-b43c58361277.png">
+<img width="1279" alt="f1" src="https://user-images.githubusercontent.com/86826743/154712429-a4cef213-b2a1-4132-8185-258cae564c06.png">
 
 2.Variants in vcf format with biological consequences annotated.
 * example_PRSS_snpEff_ann.txt (extracted)
 
-<img width="1641" alt="Screen Shot 2022-02-18 at 4 09 36 PM" src="https://user-images.githubusercontent.com/86826743/154643403-d9be53a7-f708-4782-993f-f01b8d33384a.png">
+<img width="1278" alt="f2" src="https://user-images.githubusercontent.com/86826743/154712475-bf7e735a-07c0-44d7-abff-0b966184ae68.png">
 
 3.Variant position plot with missense, stop-gained and frameshift variants highlighted。
 * example_PRSS_snpEff_ann.plot.pdf
 
-<img width="1528" alt="Screen Shot 2022-02-18 at 6 49 22 PM" src="https://user-images.githubusercontent.com/86826743/154668749-069b75b9-bc99-4de5-b296-32a3e73de2d9.png">
+<img width="1227" alt="f3" src="https://user-images.githubusercontent.com/86826743/154712572-470c49aa-8b84-41b4-a4ff-9f1ec083c722.png">
 
 4.List of missense, stop-gained and frameshift variants. For a full list of large-impact variants, please refer to the variants annotated with "HIGH" and "MODERATE" at INFO column in the NAME_PRSS_snpEff_ann.txt file.
 * example_PRSS_snpEff_ann.sum.txt
 
-<img width="584" alt="Screen Shot 2022-02-18 at 6 53 14 PM" src="https://user-images.githubusercontent.com/86826743/154669379-36f53022-3d43-4cf0-9cc6-6b0e61012c6a.png">
+<img width="763" alt="f4" src="https://user-images.githubusercontent.com/86826743/154712603-a0d618be-2d7e-4504-9bc5-e505ab32ee65.png">
 
 ## Credit
 
