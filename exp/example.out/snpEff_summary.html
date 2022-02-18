@@ -1,0 +1,1347 @@
+
+<!--==========================================================================
+	FTL macros 
+	========================================================================== -->
+
+
+<!--==========================================================================
+	CSS styles 
+	========================================================================== -->
+
+
+<style type="text/css">
+
+body {
+	background-color: #dddddd;
+}
+
+/* Table styles. */
+
+table {
+  border-color: #000;
+  border-spacing: 0px;
+  border-style: solid;
+  border-width: 1px;
+  cell-spacing: 0px;
+}
+
+.noBorder {
+  border-width: 0px;
+}
+
+td, th {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  padding: 2px 0.5em;
+  white-space: nowrap;
+}
+
+td.numeric {
+  text-align: right;
+}
+
+th {
+  background-color: #c0c0c0;
+}
+
+th.mainHeader {
+  background-color: #808080;
+  color: #ffffff;
+  text-align: left;
+}
+
+th a {
+  color: #000080;
+  text-decoration: none;
+}
+
+th a:visited {
+  color: #000080;
+}
+
+th a:active, th a:hover {
+  color: #800000;
+  text-decoration: underline;
+}
+
+.toc {
+	border: 1px solid #aaa;
+	background-color: #eeeeee;
+	padding: 5px;
+	font-size: 95%;
+}
+
+.note {
+	border: 1px solid #aaa;
+	background-color: #eeeeee;
+	padding: 5px;
+	font-size: 90%;
+	text-align: left;
+}
+
+.main {
+	margin-top: 15px;
+	width: 1000px;
+	text-align: left;
+	background: #ffffff;
+	border: 3px solid #777777;
+}
+
+.histo {
+	table-layout:fixed;
+	width:100%;
+	border:1px solid #aaa;
+	word-wrap:break-word;
+}
+
+</style>
+
+
+<!--==========================================================================
+	Index
+	========================================================================== -->
+
+<center>
+<div class="main">
+
+<center> <h3> SnpEff: Variant analysis </h3> </center>
+
+<div style="margin-left: .5em">
+<table class="toc"><tr><td>
+	<center><b>Contents</b></center>
+	<a href="#summary">Summary</a><br>
+	<a href="#changeRateChr"> Variant rate by chromosome</a><br>
+	<a href="#changesByType">Variants by type</a><br>
+	<a href="#effectsImpact"> Number of variants by impact </a><br>
+	<a href="#effectsImpact"> Number of variants by functional class </a><br>
+	<a href="#effects"> Number of variants by effect </a><br>
+	<a href="#quality">Quality histogram</a><br>
+	<a href="#indels">InDel length histogram</a><br>
+	<a href="#baseChages">Base variant table</a><br>
+	<a href="#tstv">Transition vs transversions (ts/tv)</a><br>
+	<a href="#alleleFreq"> Allele frequency </a><br>
+	<a href="#alleleCount"> Allele Count </a><br>
+	<a href="#codonChanges"> Codon change table </a><br>
+	<a href="#aaChanges"> Amino acid change table </a><br>
+	<a href="#chrChanges"> Chromosome variants plots </a><br>
+	<a href="snpEff_genes.txt"> Details by gene </a><br>
+</tr></td></table>
+</div>
+
+
+<!--==========================================================================
+	Summary table 
+	========================================================================== -->
+
+<hr>
+<a name="summary">
+<center>
+<b>Summary</b><p>
+
+<table border=0>
+	<tr bgcolor=ffffff> 
+		<td valign=top> <b> Genome </b> </td>
+		<td> GRCh38_ALT_PRSS </td>
+	</tr>
+	<tr bgcolor=dddddd> 
+		<td valign=top> <b> Date </b> </td>
+		<td> 2022-02-18 15:44 </td>
+	</tr>
+	<tr bgcolor=ffffff> 
+		<td valign=top> <b> SnpEff version </b> </td>
+		<td> <pre>SnpEff 4.3t (build 2017-11-24 10:18), by Pablo Cingolani</pre> </td>
+	</tr>
+	<tr bgcolor=dddddd> 
+		<td valign=top> <b> Command line arguments </b> </td>
+		<td> <pre>SnpEff  GRCh38_ALT_PRSS example_PRSS_snpEff_ann.vcf.gz 
+</pre> </td>
+	</tr>
+	<tr bgcolor=ffffff> 
+		<td valign=top> <b> Warnings </b> </td>
+		   
+		<td bgcolor="#ffff00"> 40 </td>
+	</tr>	
+	<tr bgcolor=dddddd> 
+		<td valign=top> <b> Errors </b> </td>
+		 
+		<td bgcolor="#dddddd"> 0 </td>
+	</tr>	
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Number of lines (input file) </b> </td>
+		<td> 256 </td>
+	</tr>
+	<tr bgcolor=dddddd>
+		<td valign=top> <b> Number of variants (before filter) </b> </td>
+		<td> 395 </td>
+	</tr>
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Number of not variants <br>(i.e. reference equals alternative) </b> </td>
+		<td> 0 </td>
+	</tr>
+	<tr bgcolor=dddddd>
+		<td valign=top> <b> Number of variants processed <br> (i.e. after filter and non-variants) </b> </td>
+		<td> 383 </td>
+	</tr>
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Number of known variants <br>(i.e. non-empty ID) </b> </td>
+		<td> 
+		0
+		( 0% ) 
+		</td>
+	</tr>
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Number of multi-allelic VCF entries <br>(i.e. more than two alleles) </b> </td>
+		<td> 
+		135
+		</td>
+	</tr>
+	<tr bgcolor=dddddd>
+		<td valign=top> <b> Number of effects </b> </td>
+		<td> 1,100 </td>
+	</tr>
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Genome total length </b> </td>
+		<td> 1,111,570 </td>
+	</tr>
+	<tr bgcolor=dddddd>
+		<td valign=top> <b> Genome effective length </b> </td>
+		<td> 1,111,570 </td>
+	</tr>
+	<tr bgcolor=ffffff>
+		<td valign=top> <b> Variant rate </b> </td>
+		<td> 1 variant every 2,902 bases </td>
+	</tr>
+</table>
+<p>
+</center>
+
+<!--==========================================================================
+	Variant rate by chromosome
+	========================================================================== -->
+
+<hr> 
+<a name="changeRateChr"> 
+
+<center>
+<b> Variants rate details </b><p>
+
+<table border=1>
+	<tr><th> Chromosome </th><th> Length </th><th> Variants </th><th> Variants rate </th></tr> 
+		<tr>
+			<td> KI270803.1 </td>
+			<td class="numeric"> 1,111,570 </td>
+			<td class="numeric"> 383 </td>
+			<td class="numeric"> 2,902 </td>
+		</tr> 
+	<tr>
+		<th> Total </th>
+		<th class="numeric"> 1,111,570 </th>
+		<th class="numeric"> 383 </th>
+		<th class="numeric"> 2,902 </th>
+	</tr> 
+</table> 
+</center>
+
+<!--==========================================================================
+	Variants by type
+	========================================================================== -->
+
+<hr> 
+<a name="changesByType"> 
+<center>
+<b> Number variants by type</b><p>
+
+<table border=1>
+	<thead>
+		<tr>
+			<th> <b> Type   </b> </th>
+			<th> <b> Total  </b> </th>
+		</tr>
+	</thead>
+    <tbody>
+	    <tr>
+	    	<td> <b> SNP </b> </td>
+	    	<td class="numeric" bgcolor="#ff0000"> 232 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> MNP </b> </td>
+	    	<td class="numeric" bgcolor="#08f600"> 11 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> INS </b> </td>
+	    	<td class="numeric" bgcolor="#06f800"> 9 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> DEL </b> </td>
+	    	<td class="numeric" bgcolor="#8b7300"> 128 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> MIXED </b> </td>
+	    	<td class="numeric" bgcolor="#00ff00"> 3 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> INV </b> </td>
+	    	<td class="numeric" bgcolor="ffffff"> 0 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> DUP </b> </td>
+	    	<td class="numeric" bgcolor="ffffff"> 0 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> BND </b> </td>
+	    	<td class="numeric" bgcolor="ffffff"> 0 </td>
+	    </tr>
+	    <tr>
+	    	<td> <b> INTERVAL </b> </td>
+	    	<td class="numeric" bgcolor="ffffff"> 0 </td>
+	    </tr>
+    </tbody>
+    <tfoot>
+	    <tr>
+	    	<th><b>Total </b> </th>
+	    	<th class="numeric"> 383 </th>
+	    </tr>
+    </tfoot>
+</table>
+</center>
+
+<!--==========================================================================
+	Effects by impact
+	========================================================================== -->
+
+<hr> 
+<a name="effectsImpact"> 
+<center>
+<b> Number of effects by impact </b> <p> 
+
+<table border=0>
+	<thead>
+		<tr> 
+			<th><b> Type (alphabetical order)  </b></th>
+			<th> &nbsp; </th>
+			<th> Count </th>
+			<th> Percent </th>
+		</tr>
+	</thead>
+		<tr> 
+			<td> <b> HIGH </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#00ff00"> 1 </td> 
+			<td class="numeric" bgcolor="#00ff00"> 0.091% </td>
+		</tr>
+		<tr> 
+			<td> <b> LOW </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#02fc00"> 10 </td> 
+			<td class="numeric" bgcolor="#02fc00"> 0.909% </td>
+		</tr>
+		<tr> 
+			<td> <b> MODERATE </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#01fd00"> 6 </td> 
+			<td class="numeric" bgcolor="#01fd00"> 0.545% </td>
+		</tr>
+		<tr> 
+			<td> <b> MODIFIER </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#ff0000"> 1,083 </td> 
+			<td class="numeric" bgcolor="#ff0000"> 98.455% </td>
+		</tr>
+</table><br>
+<p>
+</center>
+
+<!--==========================================================================
+	Effects by functional class
+	========================================================================== -->
+
+<hr> 
+<a name="effectsFuncClass"> 
+<center>
+<b> Number of effects by functional class </b> <p> 
+
+<table border=0>
+	<thead>
+		<tr> 
+			<th><b> Type (alphabetical order)  </b></th>
+			<th> &nbsp; </th>
+			<th> Count </th>
+			<th> Percent </th>
+		</tr>
+	</thead>
+		<tr> 
+			<td> <b> MISSENSE </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#b64800"> 6 </td> 
+			<td class="numeric" bgcolor="#b64800"> 40% </td>
+		</tr>
+		<tr> 
+			<td> <b> NONSENSE </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#00ff00"> 1 </td> 
+			<td class="numeric" bgcolor="#00ff00"> 6.667% </td>
+		</tr>
+		<tr> 
+			<td> <b> SILENT </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#ff0000"> 8 </td> 
+			<td class="numeric" bgcolor="#ff0000"> 53.333% </td>
+		</tr>
+</table><br>
+<p>
+
+Missense / Silent ratio: 0.75
+
+</center>
+
+<!--==========================================================================
+	Effects stats
+	========================================================================== -->
+
+<hr> 
+<a name="effects"> 
+<center>
+<b> Number of effects by type and region </b> <p> 
+
+<table border=0>
+	<tr>
+		<th> Type </th>
+		<th> Region </th>
+	</tr>
+	<tr>
+		<td> <table border=0>
+	<thead>
+		<tr> 
+			<th><b> Type (alphabetical order)  </b></th>
+			<th> &nbsp; </th>
+			<th> Count </th>
+			<th> Percent </th>
+		</tr>
+	</thead>
+		<tr> 
+			<td> <b> 3_prime_UTR_variant </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#00ff00"> 1 </td> 
+			<td class="numeric" bgcolor="#00ff00"> 0.09% </td>
+		</tr>
+		<tr> 
+			<td> <b> downstream_gene_variant </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#ff0000"> 374 </td> 
+			<td class="numeric" bgcolor="#ff0000"> 33.816% </td>
+		</tr>
+		<tr> 
+			<td> <b> intergenic_region </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#b34b00"> 263 </td> 
+			<td class="numeric" bgcolor="#b34b00"> 23.779% </td>
+		</tr>
+		<tr> 
+			<td> <b> intron_variant </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#4faf00"> 117 </td> 
+			<td class="numeric" bgcolor="#4faf00"> 10.579% </td>
+		</tr>
+		<tr> 
+			<td> <b> missense_variant </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#03fb00"> 6 </td> 
+			<td class="numeric" bgcolor="#03fb00"> 0.542% </td>
+		</tr>
+		<tr> 
+			<td> <b> non_coding_transcript_exon_variant </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#12ec00"> 28 </td> 
+			<td class="numeric" bgcolor="#12ec00"> 2.532% </td>
+		</tr>
+		<tr> 
+			<td> <b> splice_region_variant </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#03fb00"> 6 </td> 
+			<td class="numeric" bgcolor="#03fb00"> 0.542% </td>
+		</tr>
+		<tr> 
+			<td> <b> stop_gained </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#00ff00"> 1 </td> 
+			<td class="numeric" bgcolor="#00ff00"> 0.09% </td>
+		</tr>
+		<tr> 
+			<td> <b> synonymous_variant </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#04fa00"> 8 </td> 
+			<td class="numeric" bgcolor="#04fa00"> 0.723% </td>
+		</tr>
+		<tr> 
+			<td> <b> upstream_gene_variant </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#cd3100"> 302 </td> 
+			<td class="numeric" bgcolor="#cd3100"> 27.306% </td>
+		</tr>
+</table><br>
+ </td>
+		<td> <table border=0>
+	<thead>
+		<tr> 
+			<th><b> Type (alphabetical order)  </b></th>
+			<th> &nbsp; </th>
+			<th> Count </th>
+			<th> Percent </th>
+		</tr>
+	</thead>
+		<tr> 
+			<td> <b> DOWNSTREAM </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#ff0000"> 374 </td> 
+			<td class="numeric" bgcolor="#ff0000"> 34% </td>
+		</tr>
+		<tr> 
+			<td> <b> EXON </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#1ce200"> 42 </td> 
+			<td class="numeric" bgcolor="#1ce200"> 3.818% </td>
+		</tr>
+		<tr> 
+			<td> <b> INTERGENIC </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#b34b00"> 263 </td> 
+			<td class="numeric" bgcolor="#b34b00"> 23.909% </td>
+		</tr>
+		<tr> 
+			<td> <b> INTRON </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#4eb000"> 116 </td> 
+			<td class="numeric" bgcolor="#4eb000"> 10.545% </td>
+		</tr>
+		<tr> 
+			<td> <b> SPLICE_SITE_REGION </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#00fe00"> 2 </td> 
+			<td class="numeric" bgcolor="#00fe00"> 0.182% </td>
+		</tr>
+		<tr> 
+			<td> <b> UPSTREAM </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#cd3100"> 302 </td> 
+			<td class="numeric" bgcolor="#cd3100"> 27.455% </td>
+		</tr>
+		<tr> 
+			<td> <b> UTR_3_PRIME </b> </td> 
+			<th> &nbsp; </th>
+			<td class="numeric" bgcolor="#00ff00"> 1 </td> 
+			<td class="numeric" bgcolor="#00ff00"> 0.091% </td>
+		</tr>
+</table><br>
+ </td>
+	</tr>
+</table>
+<p>
+
+<img src="http://chart.apis.google.com/chart?cht=bvs&chs=800x300&chbh=50,4,8&chxt=y,y,x,x&chtt=Variations&chxp=1,50.0|3,50.0&chxr=0,0.0,34.0|1,0.0,100.0|3,0.0,100.0&chco=00FFFF,FA8072,FF0000,A52A2A,FFA500,DEB887,E9967A,7FFFD4,808080&chdl=Upstream|5%27UTR|Exon|Splice+Donor|Intron|Splice+Acceptor|3%27UTR|Downstream|Intergenic&chxl=1:|%25|2:|Intergenic|Up|5%27UTR|Exon|Donor|Intron|Acceptor|Exon|3%27UTR|Down|Intergenic|3:|&chd=e:AAzrAAAAAAAAAAAAAAAAAA,AAAAAAAAAAAAAAAAAAAAAA,AAAAAAHMAAAAAAHMAAAAAA,AAAAAAAAAAAAAAAAAAAAAA,AAAAAAAAAAT2AAAAAAAAAA,AAAAAAAAAAAAAAAAAAAAAA,AAAAAAAAAAAAAAAAALAAAA,AAAAAAAAAAAAAAAAAA..AA,tAAAAAAAAAAAAAAAAAAAtA" border=1><p>
+
+</center>
+
+<!--==========================================================================
+	Quality
+	========================================================================== -->
+
+<hr> 
+<a name="quality"> 
+<b> Quality:</b> 
+<p>
+<pre>
+	<img src="http://chart.apis.google.com/chart?chd=e:&cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chtt=Quality+histogram&chxl=1:|Count|3:|Quality&chxr=0,2.147483647E9,-2.147483648E9|1,0.0,100.0|3,0.0,100.0"><br>
+</pre>
+
+<!--==========================================================================
+	InDels
+	========================================================================== -->
+
+<hr> 
+<a name="indels"> 
+<b> Insertions and deletions length:</b> 
+<p>
+<pre>
+	<table class="histo">
+		<tr> <th width=15%>Min</th><td>0</td> </tr>
+		<tr> <th>Max</th><td>3</td> </tr>
+		<tr> <th>Mean</th><td>0.978</td> </tr>
+		<tr> <th>Median</th><td>1</td> </tr>
+		<tr> <th>Standard deviation</th><td>0.331</td> </tr>
+		<tr> <th>Values</th><td>0,1,3</td> </tr>
+		<tr> <th>Count</th><td>7,128,2</td> </tr>
+		</tr>
+	</table>
+	<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chs=800x300&chd=e:B7..AA&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chxl=1:|Count|2:|0||3|3:|Length&chtt=Insertion+deletion+length+histogram&chxr=0,2.0,128.0|1,0.0,100.0|3,0.0,100.0"><br>
+</pre>
+
+<!--==========================================================================
+	Base changes
+	========================================================================== -->
+
+<hr> 
+<a name="baseChages"> 
+<center>
+<b> Base changes (SNPs) </b> <p>
+
+<table border=1>
+    <tr>
+    	<td> &nbsp; </td>  <th> <b> A </b> </th> <th> <b> C </b> </th> <th> <b> G </b> </th> <th> <b> T </b> </th>
+    </tr>
+	    <tr> <th> <b> A </b> </th><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="#3fbf00"> 13 </td><td class="numeric" bgcolor="#c63800"> 32 </td><td class="numeric" bgcolor="#00ff00"> 4 </td> </tr>
+	    <tr> <th> <b> C </b> </th><td class="numeric" bgcolor="#55aa00"> 16 </td><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="#31cd00"> 11 </td><td class="numeric" bgcolor="#ff0000"> 40 </td> </tr>
+	    <tr> <th> <b> G </b> </th><td class="numeric" bgcolor="#e21c00"> 36 </td><td class="numeric" bgcolor="#639b00"> 18 </td><td class="numeric" bgcolor="ffffff"> 0 </td><td class="numeric" bgcolor="#1ce200"> 8 </td> </tr>
+	    <tr> <th> <b> T </b> </th><td class="numeric" bgcolor="#00ff00"> 4 </td><td class="numeric" bgcolor="#ff0000"> 40 </td><td class="numeric" bgcolor="#2ad400"> 10 </td><td class="numeric" bgcolor="ffffff"> 0 </td> </tr>
+</table>
+</center>
+
+<p>
+
+<!--==========================================================================
+	Ts/Tv
+	========================================================================== -->
+
+<hr> 
+<a name="tstv">
+<center> <b> Ts/Tv (transitions / transversions) </b> <p> </center>
+
+<small>
+<b>Note:</b> Only SNPs are used for this statistic.<br>
+<b>Note:</b> This Ts/Tv ratio is a 'raw' ratio (ratio of observed events).
+</small>
+<p>
+
+<center>
+<table border=1>
+	<tr> <th> Transitions </th><td class="numeric"> 317 </td> </tr>
+	<tr> <th> Transversions </th><td class="numeric"> 148 </td> </tr>
+	<tr> <th> Ts/Tv ratio </th><td class="numeric"> 2.1419 </td> </tr>
+</table>
+</center>
+<p>
+
+	<b>All variants:</b>
+	<pre>Sample ,HGDP00578,HG03490,HG03084,HG00581,Total
+Transitions ,74,82,79,82,317
+Transversions ,32,37,37,42,148
+Ts/Tv ,2.313,2.216,2.135,1.952,2.142
+</pre>
+	<p>
+	<b>Only known variants</b> (i.e. the ones having a non-empty ID field):
+	<pre>No results available (empty input?)</pre>
+<p>
+
+<!--==========================================================================
+	Allele frequency
+	========================================================================== -->
+
+<hr> 
+<a name="alleleFreq">
+<center> <b> Allele frequency </b> <p> </center>
+
+	<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chg=8.0,10.0,3,2&chxp=1,50.0|3,50.0&chd=e:LhUeSkdcAAK4..&chtt=Allele+Frequency+%25&chxr=0,1.0,103.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Count|2:|12||||||100|3:|Alleles+frequency"><br>
+	<table class="histo">
+		<tr> <th width=15%>Min</th><td>12</td> </tr>
+		<tr> <th>Max</th><td>100</td> </tr>
+		<tr> <th>Mean</th><td>70.516</td> </tr>
+		<tr> <th>Median</th><td>62</td> </tr>
+		<tr> <th>Standard deviation</th><td>29.234</td> </tr>
+		<tr> <th>Values</th><td>12,37,50,62,75,87,100</td> </tr>
+		<tr> <th>Count</th><td>20,34,31,48,1,19,103</td> </tr>
+		</tr>
+	</table>
+<p>
+	
+<!--==========================================================================
+	Allele Count
+	========================================================================== -->
+
+<hr> 
+<a name="alleleCount">
+<center> <b> Allele Count </b> <p> </center>
+	<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chtt=Allele+Count&chxp=1,50.0|3,50.0&chd=e:LhUeSkdcAAK4..&chxr=0,1.0,103.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Count|2:|1||||||8|3:|Allele+Count"><br>
+	<table class="histo">
+		<tr> <th width=15%>Min</th><td>1</td> </tr>
+		<tr> <th>Max</th><td>8</td> </tr>
+		<tr> <th>Mean</th><td>5.66</td> </tr>
+		<tr> <th>Median</th><td>5</td> </tr>
+		<tr> <th>Standard deviation</th><td>2.326</td> </tr>
+		<tr> <th>Values</th><td>1,3,4,5,6,7,8</td> </tr>
+		<tr> <th>Count</th><td>20,34,31,48,1,19,103</td> </tr>
+		</tr>
+	</table>
+<p>
+
+
+<!--==========================================================================
+	Hom/Het table
+	========================================================================== -->
+
+<hr> 
+<a name="homHet">
+<center> <b> Hom/Het per sample </b> <p> </center>
+	<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chd=e:KP..gAAA&chxp=1,50.0|3,50.0&chtt=Heterozygous+genotypes&chxr=0,7.0,114.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Heterozygous+count|2:|0|||3|3:|Sample+number"><br>
+	<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chd=e:..AAkerh&chxp=1,50.0|3,50.0&chtt=Homozygous+%28ALT%29+genotypes&chxr=0,123.0,180.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Homozygous+count|2:|0|||3|3:|Sample+number"><br>
+	<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chd=e:AAAAAAAA&chxp=1,50.0|3,50.0&chtt=Missing+genotypes&chxr=0,0.0,0.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Missing+count|2:|0|||3|3:|Sample+number"><br>
+	
+	<pre>Sample_names , HGDP00578, HG03490, HG03084, HG00581
+Reference , 51, 19, 39, 87
+Het , 25, 114, 61, 7
+Hom , 180, 123, 156, 162
+Missing , 0, 0, 0, 0
+</pre>
+<p>
+
+<!--==========================================================================
+	Codon change table
+	========================================================================== -->
+	
+<hr> 
+<a name="codonChanges">
+<center>
+<b> Codon changes</b> <p>
+
+	<div class="note">
+		How to read this table: <br>
+		- Rows are reference codons and columns are changed codons. E.g. Row 'AAA' column 'TAA' indicates how many 'AAA' codons have been replaced by 'TAA' codons.<br>
+		- Red background colors indicate that more changes happened (heat-map).<br>
+		- Diagonals are indicated using grey background color <br> 
+		- WARNING: This table may include different translation codon tables (e.g. mamalian DNA and mitochondrial DNA).<br>
+		<p>
+	</div><p>
+
+  
+<table border=1>
+	<thead>
+		<tr> 
+			<th> &nbsp; </th>
+			 <th> AAC </th>  <th> AAT </th>  <th> ACC </th>  <th> AGA </th>  <th> CAC </th>  <th> GAC </th>  <th> GAT </th>  <th> GCA </th>  <th> GCC </th>  <th> GCG </th>  <th> GGA </th>  <th> TAA </th>  <th> TCA </th> 
+		</tr>
+	</thead>
+			<tr> 
+				<th> AAC </th>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> AAT </th>
+					
+						<td class="numeric" bgcolor="#aa5500"> 3 </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> ACC </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="#00ff00"> 1 </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> AGA </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> CAC </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> GAC </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="#ff0000"> 4 </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> GAT </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="#ff0000"> 4 </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> GCA </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="#00ff00"> 1 </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> GCC </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> GCG </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> GGA </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="#00ff00"> 1 </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> TAA </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> TCA </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="#00ff00"> 1 </td>
+					
+						<th class="numeric"> &nbsp </th>
+			</tr>
+</table>
+</center>
+
+<!--==========================================================================
+	Amino acid change table
+	========================================================================== -->
+
+<hr> 
+<a name="aaChanges">
+<center>
+<b> Amino acid changes</b><p> 
+
+	<div class="note">
+		How to read this table: <br>
+		- Rows are reference amino acids and columns are changed amino acids. E.g. Row 'A' column 'E' indicates how many 'A' amino acids have been replaced by 'E' amino acids.<br>
+		- Red background colors indicate that more changes happened (heat-map).<br>
+		- Diagonals are indicated using grey background color <br> 
+		- WARNING: This table may include different translation codon tables (e.g. mamalian DNA and mitochondrial DNA).<br>
+		<p>
+	</div><p>
+
+<table border=1>
+	<thead>
+		<tr> 
+			<th> &nbsp; </th>
+			 <th> * </th>  <th> A </th>  <th> D </th>  <th> G </th>  <th> H </th>  <th> N </th>  <th> R </th>  <th> S </th>  <th> T </th> 
+		</tr>
+	</thead>
+			<tr> 
+				<th> * </th>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> A </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> 1 </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> D </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> 4 </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="#ff0000"> 4 </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> G </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="#00ff00"> 1 </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> H </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> N </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> 3 </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> R </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> S </th>
+					
+						<td class="numeric" bgcolor="#00ff00"> 1 </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+			</tr>
+			<tr> 
+				<th> T </th>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="#00ff00"> 1 </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<td class="numeric" bgcolor="ffffff"> &nbsp </td>
+					
+						<th class="numeric"> &nbsp </th>
+			</tr>
+</table>
+</center>
+
+<!--==========================================================================
+	Chromosome variants table
+	========================================================================== -->
+
+<hr> 
+<a name="chrChanges">
+<center>
+<b> Variants by chromosome</b><p> 
+
+<center>
+	<pre>
+		<img src="http://chart.apis.google.com/chart?cht=bvg&chbh=8,4,2&chs=800x300&chxt=y,y,x,x&chxp=1,50.0|3,50.0&chg=111000.0,19.0,3,2&chtt=Variants+histogram%3A+KI270803.1&chxr=0,0.0,195.0|1,0.0,100.0|3,0.0,100.0&chxl=1:|Variants%2F10Kb|2:|0|||||||||||110000|||||||||||220000|||||||||||330000|||||||||||440000|||||||||||550000|||||||||||660000|||||||||||770000|||||||||||880000|||||||||||990000|||||||||||1100000|1110000|3:|Position&chd=e:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApK4QA..TNMzBSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"><br>
+		KI270803.1, Position,0,10000,20000,30000,40000,50000,60000,70000,80000,90000,100000,110000,120000,130000,140000,150000,160000,170000,180000,190000,200000,210000,220000,230000,240000,250000,260000,270000,280000,290000,300000,310000,320000,330000,340000,350000,360000,370000,380000,390000,400000,410000,420000,430000,440000,450000,460000,470000,480000,490000,500000,510000,520000,530000,540000,550000,560000,570000,580000,590000,600000,610000,620000,630000,640000,650000,660000,670000,680000,690000,700000,710000,720000,730000,740000,750000,760000,770000,780000,790000,800000,810000,820000,830000,840000,850000,860000,870000,880000,890000,900000,910000,920000,930000,940000,950000,960000,970000,980000,990000,1000000,1010000,1020000,1030000,1040000,1050000,1060000,1070000,1080000,1090000,1100000,1110000
+KI270803.1,Count,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,34,49,195,59,40,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+
+	</pre>
+</center>
+
+<!--==========================================================================
+	Variants by gene 
+	========================================================================== -->
+
+<center>
+	<hr>
+	<b> Details by gene </b><p>
+	<p>
+	<b><a href="snpEff_genes.txt">Here</a></b> you can find a tab-separated table.
+</center>
+</div>
+</center>

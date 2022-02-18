@@ -117,12 +117,16 @@ for(my $i=0;$i<@gtfile;$i++){
 					my $currgt=$copy1{"@samplist[$j-9]"};
 					my @cnsum=split(":",@singlegt[$j]);
 					if($currgt == 2){
-						print OUT "\t".@cnsum[0];
+						if (@cnsum[0] eq "." or @cnsum[0] eq "./0") {
+							print OUT "\t0/0";
+						}else{
+							print OUT "\t".@cnsum[0];
+						}
 					}elsif($currgt == 1){
-						if (@cnsum[0] eq "." or @cnsum[0] eq "0") {
+						if (@cnsum[0] eq ".") {
 							print OUT "\t0/".$delindex;
-						}elsif (@cnsum[0] eq "1"){
-							print OUT "\t1/".$delindex;
+						}else{
+							print OUT "\t".@cnsum[0]."/".$delindex;
 						}
 					}elsif($currgt == 0){
 						print OUT "\t".$delindex."/".$delindex;
@@ -145,12 +149,16 @@ for(my $i=0;$i<@gtfile;$i++){
 					my $currgt=$copy2{"@samplist[$j-9]"};
 					my @cnsum=split(":",@singlegt[$j]);
 					if($currgt == 2){
-						print OUT "\t".@cnsum[0];
+						if (@cnsum[0] eq "." or @cnsum[0] eq "./0") {
+							print OUT "\t0/0";
+						}else{
+							print OUT "\t".@cnsum[0];
+						}
 					}elsif($currgt == 1){
-						if (@cnsum[0] eq "." or @cnsum[0] eq "0") {
+						if (@cnsum[0] eq ".") {
 							print OUT "\t0/".$delindex;
-						}elsif (@cnsum[0] eq "1"){
-							print OUT "\t1/".$delindex;
+						}else{
+							print OUT "\t".@cnsum[0]."/".$delindex;
 						}
 					}elsif($currgt == 0){
 						print OUT "\t".$delindex."/".$delindex;
@@ -173,12 +181,16 @@ for(my $i=0;$i<@gtfile;$i++){
 					my $currgt=$copy3{"@samplist[$j-9]"};
 					my @cnsum=split(":",@singlegt[$j]);
 					if($currgt == 2){
-						print OUT "\t".@cnsum[0];
+						if (@cnsum[0] eq "." or @cnsum[0] eq "./0") {
+							print OUT "\t0/0";
+						}else{
+							print OUT "\t".@cnsum[0];
+						}
 					}elsif($currgt == 1){
-						if (@cnsum[0] eq "." or @cnsum[0] eq "0") {
+						if (@cnsum[0] eq ".") {
 							print OUT "\t0/".$delindex;
-						}elsif (@cnsum[0] eq "1"){
-							print OUT "\t1/".$delindex;
+						}else{
+							print OUT "\t".@cnsum[0]."/".$delindex;
 						}
 					}elsif($currgt == 0){
 						print OUT "\t".$delindex."/".$delindex;
@@ -201,12 +213,16 @@ for(my $i=0;$i<@gtfile;$i++){
 					my $currgt=$copy4{"@samplist[$j-9]"};
 					my @cnsum=split(":",@singlegt[$j]);
 					if($currgt == 2){
-						print OUT "\t".@cnsum[0];
+						if (@cnsum[0] eq "." or @cnsum[0] eq "./0") {
+							print OUT "\t0/0";
+						}else{
+							print OUT "\t".@cnsum[0];
+						}
 					}elsif($currgt == 1){
-						if (@cnsum[0] eq "." or @cnsum[0] eq "0") {
+						if (@cnsum[0] eq ".") {
 							print OUT "\t0/".$delindex;
-						}elsif (@cnsum[0] eq "1"){
-							print OUT "\t1/".$delindex;
+						}else{
+							print OUT "\t".@cnsum[0]."/".$delindex;
 						}
 					}elsif($currgt == 0){
 						print OUT "\t".$delindex."/".$delindex;
@@ -229,12 +245,16 @@ for(my $i=0;$i<@gtfile;$i++){
 					my $currgt=$copy5{"@samplist[$j-9]"};
 					my @cnsum=split(":",@singlegt[$j]);
 					if($currgt == 2){
-						print OUT "\t".@cnsum[0];
+						if (@cnsum[0] eq "." or @cnsum[0] eq "./0") {
+							print OUT "\t0/0";
+						}else{
+							print OUT "\t".@cnsum[0];
+						}
 					}elsif($currgt == 1){
-						if (@cnsum[0] eq "." or @cnsum[0] eq "0") {
+						if (@cnsum[0] eq ".") {
 							print OUT "\t0/".$delindex;
-						}elsif (@cnsum[0] eq "1"){
-							print OUT "\t1/".$delindex;
+						}else{
+							print OUT "\t".@cnsum[0]."/".$delindex;
 						}
 					}elsif($currgt == 0){
 						print OUT "\t".$delindex."/".$delindex;

@@ -120,11 +120,16 @@ then
 	freebayes -f ${ref} --region PRSS1_PRSS2:1-52148 --cnv-map ${taskname}_cn.txt -L ${taskname}_remapbam.txt -m ${MQ} --min-coverage 5 --min-alternate-fraction 0.3 --use-best-n-alleles 0 --vcf ${taskname}_PRSS.tmp.vcf
 
 	#phasing
-	if [ $FLAG_phasing -eq 1 ]
+	if [ $FLAG_phasing -eq 1 -a $samplecount -gt 1 ]
 	then
 		perl ${SD}/reshapeGT.pl ${taskname}_PRSS.tmp.vcf ${taskname}.remapped.list ${taskname}
 		java -Xmx10g -jar ${SD}/beagle.28Jun21.220.jar gt=${taskname}_PRSS.reshape.vcf out=${taskname}_PRSS
 		gunzip ${taskname}_PRSS.vcf.gz
+		rm ${taskname}_PRSS.tmp.vcf ${taskname}_PRSS.reshape.vcf
+	elif [ $FLAG_phasing -eq 1 -a $samplecount -eq 1 ]
+	then
+		echo "    Only one sampkle detected. Will not perform phasing!"
+		mv ${taskname}_PRSS.tmp.vcf ${taskname}_PRSS.vcf
 	else
 		mv ${taskname}_PRSS.tmp.vcf ${taskname}_PRSS.vcf
 	fi
@@ -132,8 +137,11 @@ then
 	#annotation
 	python ${SD}/snpEff_config.py ${path_to_snpEff} ${SD}/data
 	python ${SD}/snpEff_ann.py ${path_to_snpEff} ${SD}/data ${taskname}_PRSS.vcf ${taskname}_PRSS_snpEff_ann.vcf ${taskname}_PRSS_snpEff_ann.txt
+	cat ${taskname}_PRSS_snpEff_ann.txt | grep "#CHR" > ${taskname}_missum.tmp
+	cat ${taskname}_PRSS_snpEff_ann.txt | grep "missense" >> ${taskname}_missum.tmp
+	perl ${SD}/missum.pl ${taskname}_missum.tmp ${taskname}
 
-	rm -r tmp bamfile
+	rm -r tmp bamfile ${taskname}_cn.txt ${taskname}_remapbam.txt ${taskname}_missum.tmp
 
 	TIMENOW=`date`
 	echo ${TIMENOW}"	NGS-PRSS-call complete!"
@@ -148,6 +156,6 @@ Optional arguments
           -p       Do phasing
           -n       Taskname
           
-example: ./NGS-PRSS-caller.sh -i example.list -p -n test
+example: ./NGS-PRSS-caller.sh -i example.list -p -n example
 "
 fi
