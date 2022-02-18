@@ -52,7 +52,7 @@ Optional arguments
 
 We generated the following results with the data in the NGS-PRSS-caller/exp/ directory. All output files can be found in the NGS-PRSS-caller/exp/example.out/ directory
 
-1.Full variants mapping on GRCh38_alt in vcf format (phased if you add [-p]).
+1.Full variants mapping on GRCh38 ALT contig in vcf format (phased if you add [-p]).
 * example_PRSS_snpEff_ann.vcf.gz
 
 <img width="1457" alt="Screen Shot 2022-02-18 at 4 04 32 PM" src="https://user-images.githubusercontent.com/86826743/154642697-4197db0b-0f8a-40a0-bf1a-b43c58361277.png">

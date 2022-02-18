@@ -1,7 +1,7 @@
 beagle.28Jun21.220.jar (version 5.2)
 Copyright (C) 2014-2021 Brian L. Browning
 Enter "java -jar beagle.28Jun21.220.jar" to list command line argument
-Start time: 03:44 PM CST on 18 Feb 2022
+Start time: 06:25 PM CST on 18 Feb 2022
 
 Command line: java -Xmx9102m -jar beagle.28Jun21.220.jar
   gt=example_PRSS.reshape.vcf
@@ -42,5 +42,5 @@ Study     markers:                  256
 Haplotype phasing time:        1 second
 Total time:                    2 seconds
 
-End time: 03:44 PM CST on 18 Feb 2022
+End time: 06:25 PM CST on 18 Feb 2022
 beagle.28Jun21.220.jar finished

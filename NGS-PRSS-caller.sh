@@ -10,7 +10,7 @@ FLAG_phasing=0
 MQ=50
 taskname="myPRSScall"
 ref="${SD}/data/GRCh38.ALT_PRSS.fa"
-export PATH=${path_to_samtools}:${path_to_bwa}:${path_to_java}:${path_to_python2}:${path_to_perl}:${path_to_gatk}:${path_to_freebayes}:${path_to_snpEff}:$PATH
+export PATH=${path_to_samtools}:${path_to_bwa}:${path_to_java}:${path_to_python2}:${path_to_perl}:${path_to_R}:${path_to_gatk}:${path_to_freebayes}:${path_to_snpEff}:$PATH
 
 if [ x$1 != x ]
 then
@@ -125,10 +125,11 @@ then
 		perl ${SD}/reshapeGT.pl ${taskname}_PRSS.tmp.vcf ${taskname}.remapped.list ${taskname}
 		java -Xmx10g -jar ${SD}/beagle.28Jun21.220.jar gt=${taskname}_PRSS.reshape.vcf out=${taskname}_PRSS
 		gunzip ${taskname}_PRSS.vcf.gz
-		rm ${taskname}_PRSS.tmp.vcf ${taskname}_PRSS.reshape.vcf
+		mv ${taskname}_PRSS.tmp.vcf ${taskname}_PRSS.merged.vcf
+		rm ${taskname}_PRSS.reshape.vcf
 	elif [ $FLAG_phasing -eq 1 -a $samplecount -eq 1 ]
 	then
-		echo "    Only one sampkle detected. Will not perform phasing!"
+		echo "    Only one sample detected. Will not perform phasing!"
 		mv ${taskname}_PRSS.tmp.vcf ${taskname}_PRSS.vcf
 	else
 		mv ${taskname}_PRSS.tmp.vcf ${taskname}_PRSS.vcf
@@ -137,11 +138,17 @@ then
 	#annotation
 	python ${SD}/snpEff_config.py ${path_to_snpEff} ${SD}/data
 	python ${SD}/snpEff_ann.py ${path_to_snpEff} ${SD}/data ${taskname}_PRSS.vcf ${taskname}_PRSS_snpEff_ann.vcf ${taskname}_PRSS_snpEff_ann.txt
-	cat ${taskname}_PRSS_snpEff_ann.txt | grep "#CHR" > ${taskname}_missum.tmp
-	cat ${taskname}_PRSS_snpEff_ann.txt | grep "missense" >> ${taskname}_missum.tmp
-	perl ${SD}/missum.pl ${taskname}_missum.tmp ${taskname}
+	cat ${taskname}_PRSS_snpEff_ann.txt | grep "#CHR" > ${taskname}_annsum.tmp
+	cat ${taskname}_PRSS_snpEff_ann.txt | grep "stop_gained" >> ${taskname}_annsum.tmp
+	cat ${taskname}_PRSS_snpEff_ann.txt | grep "frameshift_variant" >> ${taskname}_annsum.tmp
+	cat ${taskname}_PRSS_snpEff_ann.txt | grep "missense_variant" >> ${taskname}_annsum.tmp
+	perl ${SD}/annsum.pl ${taskname}_annsum.tmp ${taskname}
 
-	rm -r tmp bamfile ${taskname}_cn.txt ${taskname}_remapbam.txt ${taskname}_missum.tmp
+	#visualization
+	python ${SD}/snpeFF_ann_snp.plot.py ${taskname}_PRSS_snpEff_ann.txt ${taskname}_PRSS_snpEff_ann.plot.txt
+	Rscript ${SD}/snpeFF_ann_snp.plot.R ${SD}/data/GRCh38.ALT_PRSS.PRSS_exon.txt ${taskname}_PRSS_snpEff_ann.plot.txt ${taskname}_PRSS_snpEff_ann.plot.pdf
+
+	rm -r tmp bamfile ${taskname}_cn.txt ${taskname}_remapbam.txt ${taskname}_annsum.tmp Rplots.pdf gmon.out
 
 	TIMENOW=`date`
 	echo ${TIMENOW}"	NGS-PRSS-call complete!"
