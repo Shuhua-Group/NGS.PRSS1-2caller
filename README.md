@@ -58,16 +58,19 @@ We generated the following results with the data in the NGS-PRSS-caller/exp/ dir
 <img width="1457" alt="Screen Shot 2022-02-18 at 4 04 32 PM" src="https://user-images.githubusercontent.com/86826743/154642697-4197db0b-0f8a-40a0-bf1a-b43c58361277.png">
 
 2.Full annotation results of your output variant list.
-* example_PRSS_snpEff_ann.txt
+* example_PRSS_snpEff_ann.txt(part)
 
 <img width="1641" alt="Screen Shot 2022-02-18 at 4 09 36 PM" src="https://user-images.githubusercontent.com/86826743/154643403-d9be53a7-f708-4782-993f-f01b8d33384a.png">
 
-3.variant figure.
+3.Figure of common effective variants in your data.
+* example_PRSS_snpEff_ann.plot.pdf
 
-4.Summary of missense variant carriers in your input samples.
-* example_missense_sum.txt
+<img width="1528" alt="Screen Shot 2022-02-18 at 6 49 22 PM" src="https://user-images.githubusercontent.com/86826743/154668749-069b75b9-bc99-4de5-b296-32a3e73de2d9.png">
 
-<img width="409" alt="Screen Shot 2022-02-18 at 4 11 05 PM" src="https://user-images.githubusercontent.com/86826743/154643608-03112db3-7c7c-40c7-9f05-2ea4f772512e.png">
+4.Summary of common effective variants with their carriers in input samples. For full list of high impact variants, please refer to variants with "HIGH" and "MODERATE" at INFO block in the XXX_PRSS_snpEff_ann.txt file.
+* example_PRSS_snpEff_ann.sum.txt
+
+<img width="584" alt="Screen Shot 2022-02-18 at 6 53 14 PM" src="https://user-images.githubusercontent.com/86826743/154669379-36f53022-3d43-4cf0-9cc6-6b0e61012c6a.png">
 
 ## Credit
 
