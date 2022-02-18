@@ -44,6 +44,7 @@ Required arguments
 
 Optional arguments
     -m [num] Mapping quality (default=50)
+    -r       Reference genome of input data (GRCh38/GRCh37, dafault=GRCh38)
     -p       Do phasing
     -n       Taskname
 ```
