@@ -15,6 +15,9 @@ software     version       weblink
 
 > java       11.0.1        https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
 
+> R          3.6.0         https://www.r-project.org
+(with ggplot2,ggthemes)
+
 > samtools   1.9           https://sourceforge.net/projects/samtools/files/samtools
 
 > bwa        0.7.17-r1188  https://github.com/lh3/bwa/releases
