@@ -1,6 +1,6 @@
 # NGS-PRSS-caller
 
-NGS-PRSS-caller is a tool for solving misaligned short-reads of the pseudogenes PRSS3P2 and TRY7 at PRSS1-PRSS2 locus. NGS-PRSS-caller realigns short reads to GRCh38 ALT contig (chr7_KI270803v1_alt) from NGS aligned data (bam format), and detects variants including SNV, INDEL and CNV at PRSS1-PRSS2 locus with high accuracy and sensitivity. NGS-PRSS-caller can also annotate the biological consequences of a variant and perform variant phasing with population-level data.
+NGS-PRSS-caller is a toolkit for calling genetic variants at PRSS1-PRSS2 locus, which can solve the problem of misaligned short-reads from the pseudogenes PRSS3P2 and TRY7. NGS-PRSS-caller realigns short reads to GRCh38 ALT contig (chr7_KI270803v1_alt) from NGS aligned data with GRCh38 as reference (file in bam format), and detects variants including SNV, INDEL and CNV at PRSS1-PRSS2 locus with high accuracy and sensitivity. NGS-PRSS-caller can also annotate the biological consequences of a variant and perform variant phasing with population-level data.
 
 ## Installation
 
@@ -30,6 +30,8 @@ software     version       weblink
 
 > gatk       4.1.7.0       https://gatk.broadinstitute.org/hc/en-us/articles/360036194592-Getting-started-with-GATK4
 
+The python package of NGS-PRSS-caller will be released soon.
+
 ## Usage
 ```
     NGS-PRSS-caller.sh -i [filelist] -m [num] -p -n [name]
@@ -51,26 +53,27 @@ Optional arguments
     ./NGS-PRSS-caller.sh -i example.list -p -n example
 ```
 
-## Expected outcomes
+## Example output
 
-We generated the following results with the data in the NGS-PRSS-caller/exp/ directory. All output files can be found in the NGS-PRSS-caller/exp/example.out/ directory
+We generated the following results with the data in the NGS-PRSS-caller/exp/ directory. The example data are the extracted bam files (NGS with GRCh38 as reference) from the 1000 Genomes Project and Human Genome Diversity Project samples (HG00581, HG03084, HG03490, HGDP00578).
+All output files can be found in the NGS-PRSS-caller/exp/example.out/ directory. NGS-PRSS-caller can provide: 1) variants in variant call format (VCF) with phased information, 2) variants with predicted  biological consequences, 3) a plot of variant positions at PRSS1-PRSS2 locus, 4) a list of large-impact variants.
 
-1.Full variants mapping on GRCh38 ALT contig in vcf format (phased if you add [-p]).
+1. Variants detected based on GRCh38 ALT contig in vcf format (variants can be phased if you add [-p]).
 * example_PRSS_snpEff_ann.vcf.gz
 
 <img width="1457" alt="Screen Shot 2022-02-18 at 4 04 32 PM" src="https://user-images.githubusercontent.com/86826743/154642697-4197db0b-0f8a-40a0-bf1a-b43c58361277.png">
 
-2.Full annotation results of your output variant list.
-* example_PRSS_snpEff_ann.txt(part)
+2.Variants in vcf format with biological consequences annotated.
+* example_PRSS_snpEff_ann.txt (extracted)
 
 <img width="1641" alt="Screen Shot 2022-02-18 at 4 09 36 PM" src="https://user-images.githubusercontent.com/86826743/154643403-d9be53a7-f708-4782-993f-f01b8d33384a.png">
 
-3.Figure of common effective variants in your data.
+3.Variant position plot with missense, stop-gained and frameshift variants highlighted。
 * example_PRSS_snpEff_ann.plot.pdf
 
 <img width="1528" alt="Screen Shot 2022-02-18 at 6 49 22 PM" src="https://user-images.githubusercontent.com/86826743/154668749-069b75b9-bc99-4de5-b296-32a3e73de2d9.png">
 
-4.Summary of common effective variants with their carriers in input samples. For full list of high impact variants, please refer to variants with "HIGH" and "MODERATE" at INFO block in the XXX_PRSS_snpEff_ann.txt file.
+4.List of missense, stop-gained and frameshift variants. For a full list of large-impact variants, please refer to the variants annotated with "HIGH" and "MODERATE" at INFO column in the NAME_PRSS_snpEff_ann.txt file.
 * example_PRSS_snpEff_ann.sum.txt
 
 <img width="584" alt="Screen Shot 2022-02-18 at 6 53 14 PM" src="https://user-images.githubusercontent.com/86826743/154669379-36f53022-3d43-4cf0-9cc6-6b0e61012c6a.png">
