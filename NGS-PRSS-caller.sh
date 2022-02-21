@@ -111,12 +111,7 @@ then
 			python ${SD}/remapping.py -s ${id} -r ${rawref} -f ${bamfile} -e ${depth}
 		fi
 		
-		if [ $rawref == "GRCh38" ]
-		then
-			cat ${id}/${id}.PRSS_5copy.primary_genotype.refGRCh38_ALT.remapping.bedcov.matrix.beta.txt | sed -n "2p" >> ${taskname}.remapped.list
-		else
-			cat ${id}/${id}.PRSS_5copy.primary_genotype.refGRCh37_ALT.remapping.bedcov.matrix.beta.txt | sed -n "2p" >> ${taskname}.remapped.list
-		fi
+		cat ${id}/${id}.PRSS_5copy.primary_genotype.refGRCh38_ALT.remapping.bedcov.matrix.beta.txt | sed -n "2p" >> ${taskname}.remapped.list
 	done
 
 	#variant calling
