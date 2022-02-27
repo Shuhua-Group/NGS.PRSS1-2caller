@@ -1,10 +1,10 @@
-# NGS-PRSS-caller
+# NGS.PRSS1-2caller
 
-NGS-PRSS-caller is a toolkit for calling genetic variants at PRSS1-PRSS2 locus, which can solve the problem of misaligned short-reads from the pseudogenes PRSS3P2 and TRY7. NGS-PRSS-caller realigns short reads to GRCh38 ALT contig (chr7_KI270803v1_alt) from NGS aligned data with GRCh37/GRCh38 as reference (file in bam format), and detects variants including SNV, INDEL and CNV at PRSS1-PRSS2 locus with high accuracy and sensitivity. NGS-PRSS-caller can also annotate the biological consequences of a variant and perform variant phasing with population-level data.
+NGS.PRSS1-2caller is a toolkit for calling genetic variants at PRSS1-PRSS2 locus, which can solve the problem of misaligned short-reads from the pseudogenes PRSS3P2 and TRY7. NGS.PRSS1-2caller realigns short reads to GRCh38 ALT contig (chr7_KI270803v1_alt) from NGS aligned data with GRCh37/GRCh38 as reference (file in bam format), and detects variants including SNV, INDEL and CNV at PRSS1-PRSS2 locus with high accuracy and sensitivity. NGS.PRSS1-2caller can also annotate the biological consequences of a variant and perform variant phasing with population-level data.
 
 ## Installation
 
-NGS-PRSS-caller does not need to be installed. You need to replace the software path in the parameter.txt file with your own software path.
+NGS.PRSS1-2caller does not need to be installed. You need to replace the software path in the parameter.txt file with your own software path.
 
 The following software versions have been tested and passed:
 
@@ -30,11 +30,11 @@ software     version       weblink
 
 > gatk       4.1.7.0       https://gatk.broadinstitute.org/hc/en-us/articles/360036194592-Getting-started-with-GATK4
 
-The python package of NGS-PRSS-caller will be released soon.
+The python package of NGS.PRSS1-2caller will be released soon.
 
 ## Usage
 ```
-    NGS-PRSS-caller.sh -i [filelist] -m [num] -p -n [name]
+    NGS.PRSS1-2caller.sh -i [filelist] -m [num] -p -n [name]
 ```
 
 ## Options
@@ -51,13 +51,13 @@ Optional arguments
 
 ## Example
 ```
-    ./NGS-PRSS-caller.sh -i example.list -p -n example
+    ./NGS.PRSS1-2caller.sh -i example.list -p -n example
 ```
 
 ## Example output
 
-We generated the following results with the data in the NGS-PRSS-caller/exp/ directory. The example data are the extracted bam files (NGS with GRCh38 as reference) from the 1000 Genomes Project and Human Genome Diversity Project samples (HG00581, HG03084, HG03490, HGDP00578).
-All output files can be found in the NGS-PRSS-caller/exp/example.out/ directory. NGS-PRSS-caller can provide: 1) variants in variant call format (VCF) with phased information, 2) variants with predicted  biological consequences, 3) a plot of variant positions at PRSS1-PRSS2 locus, 4) a list of large-impact variants.
+We generated the following results with the data in the NGS.PRSS1-2caller/exp/ directory. The example data are the extracted bam files (NGS with GRCh38 as reference) from the 1000 Genomes Project and Human Genome Diversity Project samples (HG00581, HG03084, HG03490, HGDP00578).
+All output files can be found in the NGS.PRSS1-2caller/exp/example.out/ directory. NGS.PRSS1-2caller can provide: 1) variants in variant call format (VCF) with phased information, 2) variants with predicted  biological consequences, 3) a plot of variant positions at PRSS1-PRSS2 locus, 4) a list of large-impact variants.
 
 1. Variants detected based on GRCh38 ALT contig in vcf format (variants can be phased if you add [-p]).
 * example_PRSS_snpEff_ann.vcf.gz
