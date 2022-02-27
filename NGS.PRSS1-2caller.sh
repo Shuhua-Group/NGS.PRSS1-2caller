@@ -168,7 +168,7 @@ then
 	TIMENOW=`date`
 	echo ${TIMENOW}"	NGS-PRSS-call complete!"
 else
-	echo "usage:   NGS-PRSS-caller.sh -i [filelist] -m [num] -p -n [name]
+	echo "usage:   NGS.PRSS1-2caller.sh -i [filelist] -m [num] -p -n [name]
 
 Required arguments
           -i FILE  Tab-separated bam file list including *sample ID* / *bam file location* / *sample read depth* (U for unknown)
@@ -179,6 +179,6 @@ Optional arguments
           -p       Do phasing
           -n       Taskname
           
-example: ./NGS-PRSS-caller.sh -i example.list -p -n example
+example: ./NGS.PRSS1-2caller.sh -i example.list -p -n example
 "
 fi
