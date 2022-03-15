@@ -2,6 +2,10 @@
 
 NGS.PRSS1-2caller is a toolkit for calling genetic variants at PRSS1-PRSS2 locus, which can solve the problem of misaligned short-reads from the pseudogenes PRSS3P2 and TRY7. NGS.PRSS1-2caller realigns short reads to GRCh38 ALT contig (chr7_KI270803v1_alt) from NGS aligned data with GRCh37/GRCh38 as reference (file in bam format), and detects variants including SNV, INDEL and CNV at PRSS1-PRSS2 locus with high accuracy and sensitivity. NGS.PRSS1-2caller can also annotate the biological consequences of a variant and perform variant phasing with population-level data.
 
+Please cite our paper at:
+
+Lou H, Xie B, Wang Y, et al Improved NGS variant calling tool for the PRSS1–PRSS2 locus Gut Published Online First: 14 March 2022. doi: 10.1136/gutjnl-2022-327203
+
 ## Installation
 
 NGS.PRSS1-2caller does not need to be installed. You need to replace the software path in the parameter.txt file with your own software path.
