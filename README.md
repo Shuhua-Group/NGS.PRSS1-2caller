@@ -2,6 +2,12 @@
 
 NGS.PRSS1-2caller is a toolkit for calling genetic variants at PRSS1-PRSS2 locus, which can solve the problem of misaligned short-reads from the pseudogenes PRSS3P2 and TRY7. NGS.PRSS1-2caller realigns short reads to GRCh38 ALT contig (chr7_KI270803v1_alt) from NGS aligned data with GRCh37/GRCh38 as reference (file in bam format), and detects variants including SNV, INDEL and CNV at PRSS1-PRSS2 locus with high accuracy and sensitivity. NGS.PRSS1-2caller can also annotate the biological consequences of a variant and perform variant phasing with population-level data.
 
+## Citation
+
+If you use NGS.PRSS1-2caller, please cite our paper:
+
+Lou H, Xie B, Wang Y, et al Improved NGS variant calling tool for the PRSS1–PRSS2 locus Gut Published Online First: 14 March 2022. doi: 10.1136/gutjnl-2022-327203
+
 ## Installation
 
 NGS.PRSS1-2caller does not need to be installed. You need to replace the software path in the parameter.txt file with your own software path.
@@ -31,12 +37,6 @@ software     version       weblink
 > gatk       4.1.7.0       https://gatk.broadinstitute.org/hc/en-us/articles/360036194592-Getting-started-with-GATK4
 
 The python package of NGS.PRSS1-2caller will be released soon.
-
-## Citation
-
-Please cite our paper at:
-
-Lou H, Xie B, Wang Y, et al Improved NGS variant calling tool for the PRSS1–PRSS2 locus Gut Published Online First: 14 March 2022. doi: 10.1136/gutjnl-2022-327203
 
 ## Usage
 ```
@@ -87,7 +87,7 @@ All output files can be found in the NGS.PRSS1-2caller/exp/example.out/ director
 
 ## Credit
 
-Written by Wang Yimin & Xie bo, with contributions from Lou Haiyi.
+Written by Wang Yimin & Xie bo, conceptualized by Lou Haiyi.
 
 ## Contact
 
