@@ -92,7 +92,8 @@ open(OUT,">>$ARGV[2]_PRSS.reshape.vcf");
 #analysis
 for(my $i=0;$i<@gtfile;$i++){
 	if (@gtfile[$i] =~ /##/){
-		print OUT @gtfile[$i]."\n";
+		#print OUT @gtfile[$i]."\n";
+		next;
 	}elsif(@gtfile[$i] =~ /#/){
 		my @singlegt=split("\t",@gtfile[$i]);
 		for (my $index = 9; $index < @singlegt; $index++) {
@@ -107,7 +108,11 @@ for(my $i=0;$i<@gtfile;$i++){
 				print OUT @singlegt[0]."\t".@singlegt[1]."\t".@singlegt[2]."\t".@singlegt[3]."\t".@singlegt[4]."\t".@singlegt[5]."\t".@singlegt[6]."\t".@singlegt[7]."\t".@singlegt[8];
 				for (my $j = 9; $j < @singlegt; $j++) {
 					my @cnsum=split(":",@singlegt[$j]);
-					print OUT "\t".@cnsum[0];
+					if (@cnsum[0] eq "." or @cnsum[0] eq "./0") {
+						 print OUT "\t0/0";
+					}else{
+						 print OUT "\t".@cnsum[0];
+					}
 				}
 			}else{
 				my $altcount=split(",",@singlegt[4]);
@@ -139,7 +144,11 @@ for(my $i=0;$i<@gtfile;$i++){
 				print OUT @singlegt[0]."\t".@singlegt[1]."\t".@singlegt[2]."\t".@singlegt[3]."\t".@singlegt[4]."\t".@singlegt[5]."\t".@singlegt[6]."\t".@singlegt[7]."\t".@singlegt[8];
 				for (my $j = 9; $j < @singlegt; $j++) {
 					my @cnsum=split(":",@singlegt[$j]);
-					print OUT "\t".@cnsum[0];
+					if (@cnsum[0] eq "." or @cnsum[0] eq "./0") {
+						 print OUT "\t0/0";
+					}else{
+						 print OUT "\t".@cnsum[0];
+					}
 				}
 			}else{
 				my $altcount=split(",",@singlegt[4]);
@@ -171,7 +180,11 @@ for(my $i=0;$i<@gtfile;$i++){
 				print OUT @singlegt[0]."\t".@singlegt[1]."\t".@singlegt[2]."\t".@singlegt[3]."\t".@singlegt[4]."\t".@singlegt[5]."\t".@singlegt[6]."\t".@singlegt[7]."\t".@singlegt[8];
 				for (my $j = 9; $j < @singlegt; $j++) {
 					my @cnsum=split(":",@singlegt[$j]);
-					print OUT "\t".@cnsum[0];
+					if (@cnsum[0] eq "." or @cnsum[0] eq "./0") {
+						 print OUT "\t0/0";
+					}else{
+						 print OUT "\t".@cnsum[0];
+					}
 				}
 			}else{
 				my $altcount=split(",",@singlegt[4]);
@@ -203,7 +216,11 @@ for(my $i=0;$i<@gtfile;$i++){
 				print OUT @singlegt[0]."\t".@singlegt[1]."\t".@singlegt[2]."\t".@singlegt[3]."\t".@singlegt[4]."\t".@singlegt[5]."\t".@singlegt[6]."\t".@singlegt[7]."\t".@singlegt[8];
 				for (my $j = 9; $j < @singlegt; $j++) {
 					my @cnsum=split(":",@singlegt[$j]);
-					print OUT "\t".@cnsum[0];
+					if (@cnsum[0] eq "." or @cnsum[0] eq "./0") {
+						 print OUT "\t0/0";
+					}else{
+						 print OUT "\t".@cnsum[0];
+					}
 				}
 			}else{
 				my $altcount=split(",",@singlegt[4]);
@@ -235,7 +252,11 @@ for(my $i=0;$i<@gtfile;$i++){
 				print OUT @singlegt[0]."\t".@singlegt[1]."\t".@singlegt[2]."\t".@singlegt[3]."\t".@singlegt[4]."\t".@singlegt[5]."\t".@singlegt[6]."\t".@singlegt[7]."\t".@singlegt[8];
 				for (my $j = 9; $j < @singlegt; $j++) {
 					my @cnsum=split(":",@singlegt[$j]);
-					print OUT "\t".@cnsum[0];
+					if (@cnsum[0] eq "." or @cnsum[0] eq "./0") {
+						 print OUT "\t0/0";
+					}else{
+						 print OUT "\t".@cnsum[0];
+					}
 				}
 			}else{
 				my $altcount=split(",",@singlegt[4]);
