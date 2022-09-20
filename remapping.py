@@ -7,6 +7,7 @@ import os,sys,getopt
 import multiprocessing
 import subprocess
 import getopt
+import parameter
 
 
 def usage():
@@ -102,7 +103,7 @@ def get_fastq():
 
 
 def remapping_ALT():
-    gatk = "/picb/pggtools/binary/PGGNGS/bin/gatk"
+    gatk = "%s" %(parameter.path_to_gatk)
     header_R = "@RG\\tID:" + sample + "\\tSM:" + sample + "\\tLB:" + sample + "\\tPU:" + sample + "\\tPL:ILLUMINA"
     ref_fasta = BIN + "/data/GRCh38.ALT_PRSS.fa"
     ref_fastq_1 = fout_prefix + sample + ".PRSS.R1.fq"
