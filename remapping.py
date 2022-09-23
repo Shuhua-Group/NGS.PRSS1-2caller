@@ -102,7 +102,6 @@ def get_fastq():
 
 
 def remapping_ALT():
-    gatk = "/picb/pggtools/binary/PGGNGS/bin/gatk"
     header_R = "@RG\\tID:" + sample + "\\tSM:" + sample + "\\tLB:" + sample + "\\tPU:" + sample + "\\tPL:ILLUMINA"
     ref_fasta = BIN + "/data/GRCh38.ALT_PRSS.fa"
     ref_fastq_1 = fout_prefix + sample + ".PRSS.R1.fq"
@@ -114,7 +113,7 @@ def remapping_ALT():
     fout_logerr = fout_prefix + sample + ".logerr"
     os.system("time bwa mem -M -t 10 -R \"%s\" %s %s %s | samtools view -bS - > %s" %(header_R,ref_fasta,ref_fastq_1,ref_fastq_2,fout_pe_bam))
     os.system("time samtools sort -@ 5 -m 4G %s -o %s; samtools index %s " %(fout_pe_bam,fout_bam,fout_bam))
-    os.system("time %s --java-options \"-Xmx30G -XX:ParallelGCThreads=12\" MarkDuplicates -I %s -O %s --REMOVE_DUPLICATES true -M %s --ASSUME_SORT_ORDER coordinate --COMPRESSION_LEVEL 5 --VALIDATION_STRINGENCY SILENT --CREATE_INDEX true --TMP_DIR tmp/ " %(gatk,fout_bam,fout_dedup_bam,metric_path))
+    os.system("time gatk --java-options \"-Xmx30G -XX:ParallelGCThreads=12\" MarkDuplicates -I %s -O %s --REMOVE_DUPLICATES true -M %s --ASSUME_SORT_ORDER coordinate --COMPRESSION_LEVEL 5 --VALIDATION_STRINGENCY SILENT --CREATE_INDEX true --TMP_DIR tmp/ " %(fout_bam,fout_dedup_bam,metric_path))
     os.system("rm %s" %(fout_pe_bam))
     os.system("rm %s" %(fout_bam))
 
